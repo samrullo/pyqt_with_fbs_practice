@@ -1,0 +1,34 @@
+ QPushButton#special_button{
+            background-color:lightgreen;
+            color:white;
+            font:bold 30px 'Arial';
+            padding: 6px;
+            border-radius: 5px;
+        }
+QPushButton#special_button:pressed{
+    background-color:orange;
+}
+
+QLineEdit#big_le{
+    font:bold 30px 'Arial';
+}
+
+QLabel#big_lbl{
+    font:bold 30px 'Arial';
+}
+
+QAction{
+    font: 20px 'Arial';
+}
+
+QMenu{
+    font: 18px 'Arial';
+}
+
+QMenuBar{
+    font: 20px 'Arial';
+}
+
+QWidget{
+    font: 20px 'Arial'
+}

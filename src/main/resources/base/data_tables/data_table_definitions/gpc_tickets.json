@@ -1,0 +1,5 @@
+{
+  "data_table_name": "gpc_tickets",
+  "no_cols": "4",
+  "column_names": ["client", "project", "ticket", "url"]
+}
