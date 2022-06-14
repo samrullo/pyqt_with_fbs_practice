@@ -26,6 +26,7 @@ class DataTable(QWidget):
         )
 
         self.data_table_name = self.data_config["data_table_name"]
+        self.data_table_full_name = self.data_config["data_table_full_name"]
         self.data_table_path = pathlib.Path(self.data_table_contents_folder) / (
             self.data_table_name + ".json"
         )
@@ -42,14 +43,12 @@ class DataTable(QWidget):
 
     def initializeUI(self):
         self.setGeometry(100, 100, 800, 700)
-        self.setWindowTitle("Data Table")
         self.form_layout = QHBoxLayout()
         self.v_box = QVBoxLayout()
         self.data_table_widget = QTableWidget()
 
-        title = QLabel(self.data_config["data_table_name"])
+        title = QLabel(self.data_config["data_table_full_name"])
         title.setAlignment(Qt.AlignCenter)
-        title.setObjectName("big_lbl")
 
         # search section
         search_label = QLabel("Search text")
@@ -84,13 +83,14 @@ class DataTable(QWidget):
         )
 
         for row_idx, data_table_content in enumerate(data_table_contents):
-            for col in tableWidgetColumnsDict:
-                item = QTableWidgetItem(data_table_content[col])
-                self.data_table_widget.setItem(
-                    row_idx, tableWidgetColumnsDict[col], item
-                )
-                if tableWidgetColumnsDict[col] == 0:
-                    item.setFlags((item.flags()) & (~Qt.ItemIsEditable))
+            if len(data_table_content) != 0:
+                for col in tableWidgetColumnsDict:
+                    item = QTableWidgetItem(data_table_content[col])
+                    self.data_table_widget.setItem(
+                        row_idx, tableWidgetColumnsDict[col], item
+                    )
+                    if tableWidgetColumnsDict[col] == 0:
+                        item.setFlags((item.flags()) & (~Qt.ItemIsEditable))
 
     def filter_data(self):
         filter_by = self.search_col.currentText()
